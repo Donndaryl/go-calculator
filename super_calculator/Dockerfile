@@ -4,9 +4,8 @@ WORKDIR /app
 
 COPY go.mod ./
 COPY go.sum ./
-RUN go mod download
-
-RUN go build -o /calculator
+RUN go mod download && \
+    go build -o /calculator
 
 FROM gcr.io/distroless/base-debian10
 
