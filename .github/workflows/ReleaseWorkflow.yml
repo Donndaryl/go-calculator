@@ -26,4 +26,4 @@ jobs:
         context: ./super_calculator
         file: ./super_calculator/Dockerfile
         push: true
-        tags: donndaryl/project_repo:tagname
+        tags: ${{secrets.DOCKER_USERNAME}}/project_repo
