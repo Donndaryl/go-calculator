@@ -6,8 +6,6 @@ COPY go.mod ./
 COPY go.sum ./
 RUN go mod download
 
-ADD . .
-
 RUN go build -o /calculator
 
 FROM gcr.io/distroless/base-debian10
