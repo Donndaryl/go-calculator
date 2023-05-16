@@ -15,4 +15,6 @@ COPY --from=build /calculator /calculator
 
 USER nonroot:nonroot
 
+LABEL version="1.0"
+
 ENTRYPOINT ["/calculator"]
