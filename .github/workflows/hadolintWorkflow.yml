@@ -14,4 +14,4 @@ jobs:
 
       - name: Analyse Dockerfile avec hadolint
         run: |
-          docker run --rm -i hadolint/hadolint < ./super_calculator/Dockerfile
+          docker run --rm -i ghcr.io/hadolint/hadolint < ./super_calculator/Dockerfile
