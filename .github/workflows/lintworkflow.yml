@@ -1,0 +1,38 @@
+name: Lint Workflow
+on:
+  pull_request:
+  push:
+  workflow_dispatch:
+
+ 
+
+jobs:
+  static-analysis:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Install semgrep
+      run: curl -LO https://github.com/returntocorp/semgrep/releases/latest/download/semgrep-linux-amd64 && chmod +x semgrep-linux-amd64 && sudo mv semgrep-linux-amd64 /usr/local/bin/semgrep
+    - name: Run static analysis
+      run: semgrep --config=p/python --config=r/r2c ./
+  dockerfile-analysis:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Install hadolint
+      run: sudo wget https://github.com/hadolint/hadolint/releases/latest/download/hadolint-Linux-x86_64 -O /bin/hadolint && sudo chmod +x /bin/hadolint
+    - name: Run Dockerfile analysis
+      run: hadolint Dockerfile
+  super-linter:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Run super-linter
+      uses: github/super-linter@v4
+      with:
+        validate_all_codebase: true
+        super-linter_debug: true
