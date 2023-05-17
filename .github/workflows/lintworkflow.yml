@@ -22,7 +22,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
       - name: Run Hadolint
-        run: docker run --rm -i hadolint/hadolint < ./super_calculator/Dockerfile
+        run: docker run --rm -i sjourdan/hadolint < ./super_calculator/Dockerfile
 
   super-linter:
     name: Super-Linter
