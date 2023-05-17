@@ -17,6 +17,5 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Analyse Dockerfile avec hadolint
-        run: |
-          docker run --rm -i hadolint/hadolint < ./super_calculator/Dockerfile
+      - name: Analyse Dockerfile with hadolint
+        run: docker run --rm -i hadolint/hadolint < ./super_calculator/Dockerfile
