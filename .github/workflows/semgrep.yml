@@ -25,6 +25,7 @@ jobs:
 
     - name: Analyse Dockerfile avec semgrep
       run: |
+        docker pull semgrep/semgrep
         docker run --rm -i returntocorp/semgrep < ./super_calculator/Dockerfile
 
  
