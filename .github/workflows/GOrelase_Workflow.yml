@@ -34,4 +34,4 @@ jobs:
         run: |
           goreleaser release --snapshot --rm-dist
         env:
-          GITHUB_TOKEN: ${{ secrets.DOCKERHUB_dckr_pat_NTmt1hHzZ1kz0epYEptbmz5L2W4 }}
+          GITHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
