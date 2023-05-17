@@ -1,17 +1,31 @@
-name: semgrep
+name: semgrep Workflow
+
+ 
 
 on:
-  pull_request:
-  push:
-  workflow_dispatch:
+  pull_request:
+  push:
+  workflow_dispatch:
+
+ 
 
 jobs:
-  analyse-code:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+  analyse-code:
+    runs-on: ubuntu-latest
 
-    - name: Analyse Dockerfile with semgrep
-      run: |
-        docker run --rm -i semgrep/semgrep < ./super_calculator/Dockerfile
+ 
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+ 
+
+ 
+
+    - name: Analyse Dockerfile avec semgrep
+      run: |
+        docker run --rm -i semgrep/semgrep < ./super_calculator/Dockerfile
+
+ 
+ 
