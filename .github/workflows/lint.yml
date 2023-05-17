@@ -29,7 +29,7 @@ jobs:
         sudo wget https://github.com/hadolint/hadolint/releases/latest/download/hadolint-Linux-x86_64 -O /bin/hadolint
         sudo chmod +x /bin/hadolint
     - name: Run Dockerfile analysis
-      run: hadolint Dockerfile
+      run: hadolint ./super_calculator/Dockerfile
 
   super-linter:
     if: github.event_name == 'pull_request'
