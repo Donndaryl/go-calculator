@@ -1,0 +1,39 @@
+name: "GOrelase_Workflow"
+
+ 
+
+on:
+  push:
+    branches: [main]
+    tags:
+      - '1.1.1' # Trigger on all semver tags
+  pull_request:
+    branches: [main]
+  workflow_dispatch: # enable manual workflow runs
+
+ 
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          node-version: '16'
+
+ 
+
+      - name: Setup Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: '1.16'
+      - name: Install GoReleaser
+        run: |
+          curl -sL https://github.com/goreleaser/goreleaser/releases/download/v0.182.1/goreleaser_Linux_x86_64.tar.gz | tar xz
+          sudo mv goreleaser /usr/local/bin/
+      - name: Run GoReleaser
+        run: |
+          goreleaser release --snapshot --rm-dist 
+        env:
+          GITHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
