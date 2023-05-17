@@ -27,25 +27,7 @@ jobs:
         file: ./super_calculator/Dockerfile
         push: true
         tags: ${{secrets.username}}/project_repo
-name: "GOrelase_Workflow"
 
- 
-
-on:
-  push:
-    branches: [main]
-    tags:
-      - '1.1.1' # Trigger on all semver tags
-  pull_request:
-    branches: [main]
-  workflow_dispatch: # enable manual workflow runs
-
- 
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
       - name: Checkout code
         uses: actions/checkout@v2
         with:
